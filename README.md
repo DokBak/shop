@@ -24,13 +24,21 @@ Spring Boot : 2.x.x -> Java 11
 Spring Boot : 3.x.x -> Java 17  
   
 > Dependencies  
-  
+
+Spring Boot : 2.5.2
+
 Spring Web : Spring MVC를 사용하여 RESTful을 포함한 웹 애플리케이션을 빌드. Apache Tomcat을 기본 내장 컨테이너로 사용  
+- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>  
 Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리  
+- <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>  
 Thymeleaf : 웹 및 독립 실행형 환경 모두를 위한 최신 서버 측 Java 템플릿 엔진. HTML이 브라우저에서 정적 프로토타입으로 올바르게 표시되도록 함  
+- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>  
 Spring Data JPA : Spring Data 및 Hibernate를 사용하는 Java Persistence API로 SQL 저장소의 데이터를 유지  
+- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>  
 MySQL Driver : MySQL JDBC 드라이버  
+- <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><scope>runtime</scope></dependency>  
 H2 Database : 작은(2mb) 설치 공간으로 JDBC API 및 R2DBC엑세스를 지원하는 빠른 메모리 내 데이터베이스를 제공(임베디드 및 서버 모드, 브라우저 기반 콘솔 애플리케이션을 지원하고 테스트용 데이터베이스로도 사용)  
+- <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>runtime</scope></dependency>  
   
 ## Settings/Plugins  
 Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 자동생성)  
