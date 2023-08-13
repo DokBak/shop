@@ -44,6 +44,14 @@ VSC -> Create Git Repository -> Open -> Git -> GitHub -> Share Project on GitHub
 (기존 레포지토리에 등록)  
 VSC -> Enable Version Control Integration -> Git(OK)  
 Git -> Manage Remotes -> + -> 레포짓토리 주소 반영(https://github.com/DokBak/shop.git)  
+## Git Unset
+(원격 저장소 확인)
+git remote -v
+(원격 저장소 연결 해제)
+git remote remove origin;
+(원격 저장소 확인)
+git remote -v
+
   
 ## Annotation  
 @RestController ( @Controller + @ResponseBody )  
