@@ -46,6 +46,8 @@ Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 �
 Database Navigator(Database 접속테스트 및 관리)  
 ## Run/Edit Configurations  
 Add New Configuration -> [ProjectName]Application -> Build and run (java 11) -> [ProjectName]Application  
+## Junit(테스트 코드 작성)
+InerfaceName -> 우클릭 -> Go To -> Test -> Create New Test -> TestPackage,TestClass 설정 -> ok
 ## Git Set  
 (신규 레포지토리에 등록)  
 VSC -> Create Git Repository -> Open -> Git -> GitHub -> Share Project on GitHub  
@@ -66,6 +68,7 @@ git remote -v
 @Controller : 해당 클래스 요청을 처리하는 컨트롤러로 사용  
 @ResponseBody : 자바 객체를 HTTP 응답 본문의 객체로 변환해 클라이언트에게 전송  
 @GetMapping : 클라이언트의 요청을 처리할 URL을 매핑(서버의 루트로 오는 요청을 value="/"로 설정가능)  
+[Lombok Plugins Annotation]  
 @Getter/Setter : [Lombok Plugins Annotation] 코드 컴파일할 때 속성들에 대한 Getter/Setter 메소드 생성  
 @ToString : [Lombok Plugins Annotation] toString() 메소드 생성  
 @ToString(exclude={"변수명"}) : [Lombok Plugins Annotation] 원하지 않는 속성을 제외한 toString() 메소드 생성  
@@ -78,6 +81,7 @@ git remote -v
 @Log : [Lombok Plugins Annotation] log 변수 자동 생성  
 @Value : [Lombok Plugins Annotation] 불변 클래스 생성  
 @Data : [Lombok Plugins Annotation] @ToString, @EqualsAndHashCode, @Getter, @Setter, @RequiredArgsConstructor를 합친 어노테이션  
+[Entity mapping Annotation]  
 @Entity : [Entity mapping Annotation] 클래스를 엔티티로 선언  
 @Table : [Entity mapping Annotation] 엔티티와 매핑할 테이블을 지정  
 @Id : [Entity mapping Annotation] 테이블의 기본키에 사용할 속성을 지정  
@@ -91,7 +95,14 @@ git remote -v
 @Temporal : [Entity mapping Annotation] 날짜 타입 매핑  
 @CreateDate : [Entity mapping Annotation] 엔티티가 생성되어 저장될 때 시간 자동 저장  
 @LastModifiedDate : [Entity mapping Annotation] 조회한 엔티티의 값을 변경할 때 시간 자동 저장  
-  
+[TestClass Annotation]  
+@SpringBootTest : [TestClass Annotation] 통합 테스트를 위한 Spring Boot에서 제공하는 어플리케이션(모든 Bean을 IoC 컨테이너에 등록)  
+@TestPropertySource : [TestClass Annotation] 기본 설정 application.properties파일 보다 높은 우선순위 파일을 설정  
+locations="classpath:application-test.properties"  
+@Autowired : [TestClass Annotation] IoC컨테이너에 등록할 Bean 주입  
+@Test : [TestClass Annotation] 테스트할 메소드를 지정  
+@DisplayName : [TestClass Annotation] 테스트 코드 실행시 노출될 테스트명 지정  
+
 ## JPA ORM  
   
 > 장단점  
@@ -123,4 +134,7 @@ git remote -v
 ## SQL  
   
 - create database shop default character set utf8 collate utf8_general_ci;  
+  
+## JPQL  
 
+- find + (엔티티 이름) + By + 변수이름 : ex) findByItemNm, findByItemNmOrItemDetail, findByPriceLessThan, findByPriceLessThanOrderByPriceDesc   
