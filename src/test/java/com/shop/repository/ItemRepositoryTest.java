@@ -81,7 +81,7 @@ class ItemRepositoryTest {
     // 테스트할 메소드를 지정
     @DisplayName("가격 LessThan 테스트")
     // 테스트 코드 실행시 노출될 테스트명 지정
-    public void findByPriceLessThan(){
+    public void findByPriceLessThanTest(){
         this.createItemList();
         List<Item> itemList = itemRepository.findByPriceLessThan(10005);
         for(Item item : itemList){
@@ -92,12 +92,34 @@ class ItemRepositoryTest {
     // 테스트할 메소드를 지정
     @DisplayName("가격 내림차순 조회 테스트")
     // 테스트 코드 실행시 노출될 테스트명 지정
-    public void findByPriceLessThanOrderByPriceDesc(){
+    public void findByPriceLessThanOrderByPriceDescTest(){
         this.createItemList();
         List<Item> itemList = itemRepository.findByPriceLessThanOrderByPriceDesc(10005);
         for(Item item : itemList){
             System.out.println(item.toString());
         }
     }
+    @Test
+    // 테스트할 메소드를 지정
+    @DisplayName("@Query를 이용한 상품 조회 테스트")
+    // 테스트 코드 실행시 노출될 테스트명 지정
+    public void findByItemDetailTest(){
+        this.createItemList();
+        List<Item> itemList = itemRepository.findByItemDetail("테스트 상품 상세 설명");
+        for(Item item : itemList){
+            System.out.println(item.toString());
+        }
+    }
 
+    @Test
+    // 테스트할 메소드를 지정
+    @DisplayName("nativeQuery 속성을 이용한 상품 조회 테스트")
+    // 테스트 코드 실행시 노출될 테스트명 지정
+    public void findByItemDetailByNativeTest(){
+        this.createItemList();
+        List<Item> itemList = itemRepository.findByItemDetailByNative("테스트 상품 상세 설명");
+        for(Item item : itemList){
+            System.out.println(item.toString());
+        }
+    }
 }

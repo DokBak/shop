@@ -29,14 +29,19 @@ Spring Boot : 2.5.2
 
 Spring Web : Spring MVC를 사용하여 RESTful을 포함한 웹 애플리케이션을 빌드. Apache Tomcat을 기본 내장 컨테이너로 사용  
 - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>  
-Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리  
+
+Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리
 - <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>  
+
 Thymeleaf : 웹 및 독립 실행형 환경 모두를 위한 최신 서버 측 Java 템플릿 엔진. HTML이 브라우저에서 정적 프로토타입으로 올바르게 표시되도록 함  
 - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>  
+
 Spring Data JPA : Spring Data 및 Hibernate를 사용하는 Java Persistence API로 SQL 저장소의 데이터를 유지  
 - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>  
+
 MySQL Driver : MySQL JDBC 드라이버  
 - <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><scope>runtime</scope></dependency>  
+
 H2 Database : 작은(2mb) 설치 공간으로 JDBC API 및 R2DBC엑세스를 지원하는 빠른 메모리 내 데이터베이스를 제공(임베디드 및 서버 모드, 브라우저 기반 콘솔 애플리케이션을 지원하고 테스트용 데이터베이스로도 사용)  
 - <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>runtime</scope></dependency>  
   
@@ -68,7 +73,9 @@ git remote -v
 @Controller : 해당 클래스 요청을 처리하는 컨트롤러로 사용  
 @ResponseBody : 자바 객체를 HTTP 응답 본문의 객체로 변환해 클라이언트에게 전송  
 @GetMapping : 클라이언트의 요청을 처리할 URL을 매핑(서버의 루트로 오는 요청을 value="/"로 설정가능)  
-[Lombok Plugins Annotation]  
+  
+> [Lombok Plugins Annotation]  
+  
 @Getter/Setter : [Lombok Plugins Annotation] 코드 컴파일할 때 속성들에 대한 Getter/Setter 메소드 생성  
 @ToString : [Lombok Plugins Annotation] toString() 메소드 생성  
 @ToString(exclude={"변수명"}) : [Lombok Plugins Annotation] 원하지 않는 속성을 제외한 toString() 메소드 생성  
@@ -81,7 +88,9 @@ git remote -v
 @Log : [Lombok Plugins Annotation] log 변수 자동 생성  
 @Value : [Lombok Plugins Annotation] 불변 클래스 생성  
 @Data : [Lombok Plugins Annotation] @ToString, @EqualsAndHashCode, @Getter, @Setter, @RequiredArgsConstructor를 합친 어노테이션  
-[Entity mapping Annotation]  
+  
+> [Entity mapping Annotation]  
+  
 @Entity : [Entity mapping Annotation] 클래스를 엔티티로 선언  
 @Table : [Entity mapping Annotation] 엔티티와 매핑할 테이블을 지정  
 @Id : [Entity mapping Annotation] 테이블의 기본키에 사용할 속성을 지정  
@@ -95,7 +104,9 @@ git remote -v
 @Temporal : [Entity mapping Annotation] 날짜 타입 매핑  
 @CreateDate : [Entity mapping Annotation] 엔티티가 생성되어 저장될 때 시간 자동 저장  
 @LastModifiedDate : [Entity mapping Annotation] 조회한 엔티티의 값을 변경할 때 시간 자동 저장  
-[TestClass Annotation]  
+  
+> [TestClass Annotation]  
+  
 @SpringBootTest : [TestClass Annotation] 통합 테스트를 위한 Spring Boot에서 제공하는 어플리케이션(모든 Bean을 IoC 컨테이너에 등록)  
 @TestPropertySource : [TestClass Annotation] 기본 설정 application.properties파일 보다 높은 우선순위 파일을 설정  
 locations="classpath:application-test.properties"  
@@ -103,6 +114,11 @@ locations="classpath:application-test.properties"
 @Test : [TestClass Annotation] 테스트할 메소드를 지정  
 @DisplayName : [TestClass Annotation] 테스트 코드 실행시 노출될 테스트명 지정  
 
+> [JPQL Annotation]
+  
+@Query : [JPQL Annotation] 객체지향 쿼리 언어사용  
+@Param : [JPQL Annotation] JPQL(@Query)에 지정될 파라미터를 지정   
+  
 ## JPA ORM  
   
 > 장단점  
@@ -135,6 +151,21 @@ locations="classpath:application-test.properties"
   
 - create database shop default character set utf8 collate utf8_general_ci;  
   
-## JPQL  
+## JPQL(Java Persistence Query Language)  
 
 - find + (엔티티 이름) + By + 변수이름 : ex) findByItemNm, findByItemNmOrItemDetail, findByPriceLessThan, findByPriceLessThanOrderByPriceDesc   
+  - select 구문  
+
+## Querydsl
+
+- 고정 SQL문이 아닌 조건에 맞게 동적으로 쿼리 생성이 가능  
+- 비슷한 쿼리를 재사용 가능. 제약 조건 조립 및 가독성 향상  
+- 문자열이 아닌 자바 소스코드로 작성하기에 컴파일 시점에서 오류 확인 가능  
+- IDE의 도움을 받아서 자동 완성 기능을 이용할 수 있기에 생산성 향상  
+  
+- <dependency><groupId>com.querydsl</groupId><artifactId>querydsl-jpa</artifactId><version>4.3.1</version></dependency>  
+- <dependency><groupId>com.querydsl</groupId><artifactId>querydsl-apt</artifactId><version>4.3.1</version></dependency>  
+- <plugin></plugin> 추가
+
+- QDomain이 임포트 안 될 경우
+  - File -> Project Structure -> Modules -> target/classes/generated-sources/ 클릭 -> Mark as: Sources
