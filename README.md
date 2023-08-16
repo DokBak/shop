@@ -156,7 +156,7 @@ locations="classpath:application-test.properties"
 - find + (엔티티 이름) + By + 변수이름 : ex) findByItemNm, findByItemNmOrItemDetail, findByPriceLessThan, findByPriceLessThanOrderByPriceDesc   
   - select 구문  
 
-## Querydsl
+## Querydsl(JPQL을 코드로 작성할 수 있도록 도와주는 빌드 API)
 
 - 고정 SQL문이 아닌 조건에 맞게 동적으로 쿼리 생성이 가능  
 - 비슷한 쿼리를 재사용 가능. 제약 조건 조립 및 가독성 향상  
