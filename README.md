@@ -169,3 +169,11 @@ locations="classpath:application-test.properties"
 
 - QDomain이 임포트 안 될 경우
   - File -> Project Structure -> Modules -> target/classes/generated-sources/ 클릭 -> Mark as: Sources
+
+## Thymeleaf  
+
+- 서버 사이드 템플릿 엔진으로 Thymeleaf, JSP, Freemarker, Groovy, Mustache 등이 있다.  
+- @RequestMapping(value="/thymeleaf") : 어떤 컨트롤러가 처리할지 매핑하는 어노테이션, localhost 뒤에 붙는 url 경로  
+- @GetMapping(value="/ex01") : 컨트롤러 내부에서 처리하는 매핑 어노테이션, 컨트롤러 뒤에 붙는 url 경로  
+- Controller에서 org.springframework.ui.Model 객체에 addAttribute메소드로 key, value구조로 넣어 뷰에 출력  
+- text="${data} Model 객체에 넣은 값을 뷰에서 활용    
