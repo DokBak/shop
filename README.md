@@ -24,27 +24,28 @@ Spring Boot : 2.x.x -> Java 11
 Spring Boot : 3.x.x -> Java 17  
   
 > Dependencies  
-
-Spring Boot : 2.5.2
-
-Spring Web : Spring MVC를 사용하여 RESTful을 포함한 웹 애플리케이션을 빌드. Apache Tomcat을 기본 내장 컨테이너로 사용  
-- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>  
-
-Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리
-- <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>  
-
-Thymeleaf : 웹 및 독립 실행형 환경 모두를 위한 최신 서버 측 Java 템플릿 엔진. HTML이 브라우저에서 정적 프로토타입으로 올바르게 표시되도록 함  
-- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>  
-
-Spring Data JPA : Spring Data 및 Hibernate를 사용하는 Java Persistence API로 SQL 저장소의 데이터를 유지  
-- <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>  
-
-MySQL Driver : MySQL JDBC 드라이버  
-- <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><scope>runtime</scope></dependency>  
-
-H2 Database : 작은(2mb) 설치 공간으로 JDBC API 및 R2DBC엑세스를 지원하는 빠른 메모리 내 데이터베이스를 제공(임베디드 및 서버 모드, 브라우저 기반 콘솔 애플리케이션을 지원하고 테스트용 데이터베이스로도 사용)  
-- <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>runtime</scope></dependency>  
   
+- Spring Boot : 2.5.2  
+- Spring Web : Spring MVC를 사용하여 RESTful을 포함한 웹 애플리케이션을 빌드. Apache Tomcat을 기본 내장 컨테이너로 사용  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>  
+- Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리  
+  - <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>  
+- Thymeleaf : 웹 및 독립 실행형 환경 모두를 위한 최신 서버 측 Java 템플릿 엔진. HTML이 브라우저에서 정적 프로토타입으로 올바르게 표시되도록 함  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-thymeleaf</artifactId></dependency>  
+- Spring Data JPA : Spring Data 및 Hibernate를 사용하는 Java Persistence API로 SQL 저장소의 데이터를 유지  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>  
+- MySQL Driver : MySQL JDBC 드라이버  
+  - <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><scope>runtime</scope></dependency>  
+- H2 Database : 작은(2mb) 설치 공간으로 JDBC API 및 R2DBC엑세스를 지원하는 빠른 메모리 내 데이터베이스를 제공(임베디드 및 서버 모드, 브라우저 기반 콘솔 애플리케이션을 지원하고 테스트용 데이터베이스로도 사용)  
+  - <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>runtime</scope></dependency>  
+- querydsl : JQPL을 사용할수 있도록 하는 의존성  
+  - <dependency><groupId>com.querydsl</groupId><artifactId>querydsl-jpa</artifactId><version>4.3.1</version></dependency>  
+  - <dependency><groupId>com.querydsl</groupId><artifactId>querydsl-apt</artifactId><version>4.3.1</version></dependency>  
+- Spring Boot Devtools : 어플리케이션 개발시 유용한 기능을 제공하는 모듈  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-devtools</artifactId></dependency>  
+- Thymeleaf Layout Dialect dependency : 하나의 레이아웃을 여러 페이지에 똑같이 적용가능한 의존성
+  - <dependency><groupId>nz.net.ultraq.thymeleaf</groupId><artifactId>thymeleaf-layout-dialect</artifactId><version>2.5.1</version></dependency>
+
 ## Settings/Plugins  
 Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 자동생성)  
 -> Settings -> Build, Execution, Deployment -> Compiler -> Annotation Processors -> Enable annotation processing [check on]  
@@ -66,7 +67,6 @@ git remote -v
 git remote remove origin;
 (원격 저장소 확인)
 git remote -v
-
   
 ## Annotation  
 @RestController ( @Controller + @ResponseBody )  
@@ -119,6 +119,43 @@ locations="classpath:application-test.properties"
 @Query : [JPQL Annotation] 객체지향 쿼리 언어사용  
 @Param : [JPQL Annotation] JPQL(@Query)에 지정될 파라미터를 지정   
   
+> [Controller Annotation]  
+  
+@RequestMapping : [Controller Annotation] 어떤 컨트롤러가 처리할지 매핑하는 어노테이션  
+@GetMapping : [Controller Annotation] 컨트롤러 내에서 처리할 url 매핑하는 어노테이션  
+  
+## Annotation  
+- application.name = shop : 어플리케이션 이름으로 @Value 어노테이션으로 읽을 수 있다.
+- server.port = 80 : 서버의 포트 지정(미설정시 8080)  
+- database
+  - mysql 관련 설정
+    - spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    - spring.datasource.url=jdbc:mysql://{url}:{port}/{db}?serverTimezone=UTC
+      - spring.datasource.url=jdbc:mysql://192.168.29.200:3306/shop?serverTimezone=UTC
+      - spring.datasource.url=jdbc:mysql://localhost:3306/shop?serverTimezone=UTC
+    - spring.datasource.username=root
+    - spring.datasource.password=cos1234
+  - H2 database 관련 설정
+    - spring.datasource.driver-class-name=org.h2.Driver : 테스트환경용 h2 데이터베이스 설정
+    - spring.datasource.url=jdbc:h2:mem:test
+    - spring.datasource.username=sa
+    - spring.datasource.password=
+    - spring.jpa.database-platform=org.hibernate.dialect.H2Dialect : 데이터베이스를 변경하더라도 Dialect를 설정하면 어플리케이션 구동에 문제 없도록 설정 
+- spring.jpa.properties.hibernate.show_sql=true : 실행되는 쿼리 콘솔 출력
+- spring.jpa.properties.hibernate.format_sql=true : 콘솔창에 출력되는 쿼리를 가독성이 좋게 포멧팅
+- logging.level.org.hibernate.type.descriptor.sql=trace : 쿼리에 물음표로 출력되는 바인드 파라미터 출력  
+- spring.jpa.hibernate.dll-auto=create
+  - none : 미사용 (운영환경)
+  - validate : 엔티티와 테이블 정상 매핑 확인 (운영환경)
+  - create : 기존 테이블 삭제 후 테이블 생성 (개발환경)
+  - create-drop : 기존 테이블 삭제 후 테이블 생성, 종료 시점에 테이블 삭제 (개발환경)
+  - update : 변경된 스키마 적용 (개발환경)
+- spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect : 데이터베이스를 변경하더라도 Dialect를 설정하면 어플리케이션 구동에 문제 없도록 설정  
+- spring.devtools.livereload.enabled=true : 개발자가 직접 브라우저의 새로고침을 하지 않아도 변경된 리소스가 웹 브라우저에 반영  
+  - 웹브라우저(크롬등)에서 확장 프로그램 추가 : LiveReload
+- spring.thymeleaf.cache = false : 운영환경에서는 캐싱기능을 사용 하지만 개발환경에서는 사용하지 않는다.
+
+
 ## JPA ORM  
   
 > 장단점  
@@ -176,4 +213,17 @@ locations="classpath:application-test.properties"
 - @RequestMapping(value="/thymeleaf") : 어떤 컨트롤러가 처리할지 매핑하는 어노테이션, localhost 뒤에 붙는 url 경로  
 - @GetMapping(value="/ex01") : 컨트롤러 내부에서 처리하는 매핑 어노테이션, 컨트롤러 뒤에 붙는 url 경로  
 - Controller에서 org.springframework.ui.Model 객체에 addAttribute메소드로 key, value구조로 넣어 뷰에 출력  
+- Controller에서 리턴 값은 resources/templates 밑에 위치한 파일을 지정 thymeleafEx/thymeleafEx01
 - text="${data} Model 객체에 넣은 값을 뷰에서 활용    
+
+- xmlns:th="http://www.thymeleaf.org" -> thymeleaf 템플릿을 사용하기 위해 반드시 추가
+- xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout layout:decorate="~{layouts/layout1}" -> layouts폴더 밑의 layout1을 사용
+- layout:fragment="content" -> content 치환 
+- th:text="${dataName}" -> 컨트롤러에서 전달받은 dataName값을 출력
+- th:each="dataName, status: ${dataList}" -> 컨트롤러에서 전달받은 dataList 리스트값에서 dataName객체를 하나씩 꺼내서 출력
+- th:if="${data}" -> 자바의 if 조건 처리와 비슷
+- th:unless="${data}" -> 자바의 else 조건 처리와 비슷
+- th:switch="${data}" -> switch 조건문
+- th:case= -> switch 조건문 값
+- th:href="@{url(param='')}" -> url은 /thymeleaf/ex01 또는 https://www.thymeleaf.org/ 등으로 지정
+
