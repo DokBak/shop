@@ -213,17 +213,28 @@ locations="classpath:application-test.properties"
 - @RequestMapping(value="/thymeleaf") : 어떤 컨트롤러가 처리할지 매핑하는 어노테이션, localhost 뒤에 붙는 url 경로  
 - @GetMapping(value="/ex01") : 컨트롤러 내부에서 처리하는 매핑 어노테이션, 컨트롤러 뒤에 붙는 url 경로  
 - Controller에서 org.springframework.ui.Model 객체에 addAttribute메소드로 key, value구조로 넣어 뷰에 출력  
-- Controller에서 리턴 값은 resources/templates 밑에 위치한 파일을 지정 thymeleafEx/thymeleafEx01
+- Controller에서 리턴 값은 resources/templates 밑에 위치한 파일을 지정 thymeleafEx/thymeleafEx01  
 - text="${data} Model 객체에 넣은 값을 뷰에서 활용    
 
-- xmlns:th="http://www.thymeleaf.org" -> thymeleaf 템플릿을 사용하기 위해 반드시 추가
-- xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout layout:decorate="~{layouts/layout1}" -> layouts폴더 밑의 layout1을 사용
+- xmlns:th="http://www.thymeleaf.org" -> thymeleaf 템플릿을 사용하기 위해 반드시 추가  
+- xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout layout:decorate="~{layouts/layout1}" -> layouts폴더 밑의 layout1을 사용  
 - layout:fragment="content" -> content 치환 
-- th:text="${dataName}" -> 컨트롤러에서 전달받은 dataName값을 출력
-- th:each="dataName, status: ${dataList}" -> 컨트롤러에서 전달받은 dataList 리스트값에서 dataName객체를 하나씩 꺼내서 출력
-- th:if="${data}" -> 자바의 if 조건 처리와 비슷
-- th:unless="${data}" -> 자바의 else 조건 처리와 비슷
-- th:switch="${data}" -> switch 조건문
-- th:case= -> switch 조건문 값
-- th:href="@{url(param='')}" -> url은 /thymeleaf/ex01 또는 https://www.thymeleaf.org/ 등으로 지정
+- th:text="${dataName}" -> 컨트롤러에서 전달받은 dataName값을 출력  
+- th:each="dataName, status: ${dataList}" -> 컨트롤러에서 전달받은 dataList 리스트값에서 dataName객체를 하나씩 꺼내서 출력  
+- th:if="${data}" -> 자바의 if 조건 처리와 비슷  
+- th:unless="${data}" -> 자바의 else 조건 처리와 비슷  
+- th:switch="${data}" -> switch 조건문  
+- th:case= -> switch 조건문 값  
+- th:href="@{url(param='')}" -> url은 /thymeleaf/ex01 또는 https://www.thymeleaf.org/ 등으로 지정  
 
+## Bootstrap 
+CDN(Contents Delivery Network) : 물리적으로 멀리 떨어져 있는 사용자에게 콘텐츠를 좀 더 빠르게 제공하는 서비스  
+- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+## CSS
+- html에서 태그의 css를 설정할때는 이름만 지정 : <p> -> p{ }
+- id 속성값을 지정할때 #으로 설정 : <p id="pid"> -> #pid{ }
+- class 속성값을 지정할때 .으로 설정 : <p class="pclass"> -> .pclass{ }
