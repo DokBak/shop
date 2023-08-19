@@ -45,6 +45,8 @@ Spring Boot : 3.x.x -> Java 17
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-devtools</artifactId></dependency>  
 - Thymeleaf Layout Dialect dependency : 하나의 레이아웃을 여러 페이지에 똑같이 적용가능한 의존성
   - <dependency><groupId>nz.net.ultraq.thymeleaf</groupId><artifactId>thymeleaf-layout-dialect</artifactId><version>2.5.1</version></dependency>
+- Spring boot Security  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>  
 
 ## Settings/Plugins  
 Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 자동생성)  
@@ -123,6 +125,12 @@ locations="classpath:application-test.properties"
   
 @RequestMapping : [Controller Annotation] 어떤 컨트롤러가 처리할지 매핑하는 어노테이션  
 @GetMapping : [Controller Annotation] 컨트롤러 내에서 처리할 url 매핑하는 어노테이션  
+  
+> [Spring boot Security]
+
+@Configuration : @Bean등록을 하기 위해 추가할 어노테이션  
+@EnableWebSecurity : WebSecurityConfigurerAdapter를 상속받는 클래스에 선언하면 SpringSecurityFilterChain이 자동 포함되어 보안 설정을 커스터마이징 가능  
+@Bean : 비밀번호의 경우 데이터베이스에 그대로 저장되면 해킹에 취약하기 때문에 BcryptPasswordEncoder의 해시 함수를 이용하여 비밀번호를 암호화하여 저장   
   
 ## Annotation  
 - application.name = shop : 어플리케이션 이름으로 @Value 어노테이션으로 읽을 수 있다.
