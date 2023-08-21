@@ -47,6 +47,8 @@ Spring Boot : 3.x.x -> Java 17
   - <dependency><groupId>nz.net.ultraq.thymeleaf</groupId><artifactId>thymeleaf-layout-dialect</artifactId><version>2.5.1</version></dependency>
 - Spring boot Security  
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>  
+- Spring-validation
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-validation</artifactId></dependency>
 
 ## Settings/Plugins  
 Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 자동생성)  
@@ -128,10 +130,21 @@ locations="classpath:application-test.properties"
   
 > [Spring boot Security]
 
-@Configuration : @Bean등록을 하기 위해 추가할 어노테이션  
-@EnableWebSecurity : WebSecurityConfigurerAdapter를 상속받는 클래스에 선언하면 SpringSecurityFilterChain이 자동 포함되어 보안 설정을 커스터마이징 가능  
-@Bean : 비밀번호의 경우 데이터베이스에 그대로 저장되면 해킹에 취약하기 때문에 BcryptPasswordEncoder의 해시 함수를 이용하여 비밀번호를 암호화하여 저장   
+@Configuration : [Spring boot Security] @Bean등록을 하기 위해 추가할 어노테이션  
+@EnableWebSecurity : [Spring boot Security] WebSecurityConfigurerAdapter를 상속받는 클래스에 선언하면 SpringSecurityFilterChain이 자동 포함되어 보안 설정을 커스터마이징 가능  
+@Bean : [Spring boot Security] 비밀번호의 경우 데이터베이스에 그대로 저장되면 해킹에 취약하기 때문에 BcryptPasswordEncoder의 해시 함수를 이용하여 비밀번호를 암호화하여 저장   
   
+> [Spring boot Validation]
+
+@NotEmpty : [Spring boot Validation] Null 체크 및 문자열의 경우 길이 0 인지 검사  
+@NotBlank : [Spring boot Validation] NUll 체크 및 문자열의 경우 길이 0 및 빈 문자열 " "검사  
+@Length(min=,max=) : [Spring boot Validation] 최소 최대 길이 검사  
+@Email : [Spring boot Validation] 이메일 형식인지 검사  
+@Max(숫자) : [Spring boot Validation] 지정한 값보다 작은지 검사  
+@Min(숫자) : [Spring boot Validation] 지정한 값보다 큰지 검사  
+@Null : [Spring boot Validation] 값이 Null인지 검사  
+@NotNull : [Spring boot Validation] 값이 Null이 아닌지 검사  
+
 ## Annotation  
 - application.name = shop : 어플리케이션 이름으로 @Value 어노테이션으로 읽을 수 있다.
 - server.port = 80 : 서버의 포트 지정(미설정시 8080)  
@@ -193,7 +206,7 @@ locations="classpath:application-test.properties"
 - 클래스자체, 생성한 인스턴스도 모두 엔티티라 부름  
   
 ## SQL  
-  
+- mysql -u root -p -h localhost -P 3306
 - create database shop default character set utf8 collate utf8_general_ci;  
   
 ## JPQL(Java Persistence Query Language)  
