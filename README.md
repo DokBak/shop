@@ -26,6 +26,9 @@ Spring Boot : 3.x.x -> Java 17
 > Dependencies  
   
 - Spring Boot : 2.5.2  
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
+  - <dependency><goupId>org.springframework</groupId><atifactId>spring-test</artifactId></dependency>
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-test</artifactId></dependency>
 - Spring Web : Spring MVC를 사용하여 RESTful을 포함한 웹 애플리케이션을 빌드. Apache Tomcat을 기본 내장 컨테이너로 사용  
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>  
 - Lombok : 상용구 코드를 줄이는데 도움이 되는 Java 주석 라이브러리  
@@ -45,10 +48,15 @@ Spring Boot : 3.x.x -> Java 17
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-devtools</artifactId></dependency>  
 - Thymeleaf Layout Dialect dependency : 하나의 레이아웃을 여러 페이지에 똑같이 적용가능한 의존성
   - <dependency><groupId>nz.net.ultraq.thymeleaf</groupId><artifactId>thymeleaf-layout-dialect</artifactId><version>2.5.1</version></dependency>
-- Spring boot Security  
+- Spring boot Security : 스프링부트의 세큐리티 의존성을 사용  
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>  
-- Spring-validation
+- Spring-validation : 데이터의 유효성검사체크용 의존성  
   - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-validation</artifactId></dependency>
+- junit : 자바 유닛테스트 의존성  
+  - <dependency><groupId>junit</groupId><artifactId>junit</artifactId></dependency>  
+  - <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId></dependency>  
+- thymeleaf.extras : 유저별 로그인시 메뉴 화면등이 변경되는 기능을 지원하는 의존성  
+  - <dependency><groupId>org.thymeleaf.extras</groupId><artifactId>thymeleaf-extras-springsecurity5</artifactId></dependency>
 
 ## Settings/Plugins  
 Lombok(반복적인 Getter/Setter ToString등의 자바코드를 컴파일시 자동생성)  
@@ -208,7 +216,9 @@ locations="classpath:application-test.properties"
 ## SQL  
 - mysql -u root -p -h localhost -P 3306
 - create database shop default character set utf8 collate utf8_general_ci;  
-  
+- use shop;
+- create table member ( member_id Long not null, name varchar(255),  email varchar(255), password varchar(255), address varchar(255), role varchar(255) );  
+
 ## JPQL(Java Persistence Query Language)  
 
 - find + (엔티티 이름) + By + 변수이름 : ex) findByItemNm, findByItemNmOrItemDetail, findByPriceLessThan, findByPriceLessThanOrderByPriceDesc   
