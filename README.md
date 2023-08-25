@@ -269,3 +269,9 @@ CDN(Contents Delivery Network) : 물리적으로 멀리 떨어져 있는 사용�
 - html에서 태그의 css를 설정할때는 이름만 지정 : <p> -> p{ }
 - id 속성값을 지정할때 #으로 설정 : <p id="pid"> -> #pid{ }
 - class 속성값을 지정할때 .으로 설정 : <p class="pclass"> -> .pclass{ }
+
+## Relational Mapping
+- 1:1 
+- 1:N
+- N:1
+- N:N
